@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apakah Aku — Game Tebak Gambar</title>
+  <meta name="description" content="Game seru tebak gambar dengan 3 level kesulitan. Uji kecepatan dan ketajaman pikiranmu!" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Animated background particles -->
+  <div id="particles-container"></div>
+  <div class="grid-overlay"></div>
+  <div class="scanline"></div>
+
+  <!-- ===========================
+       PAGE: BERANDA (HOME)
+  ============================ -->
+  <section id="page-home" class="page active">
+    <button class="btn-about" id="btn-about-open" onclick="showPage('page-about')">
+      <span class="btn-about-icon">?</span>
+      <span>Tentang Game</span>
+    </button>
+
+    <div class="home-content">
+      <div class="glitch-wrapper">
+        <div class="home-subtitle">— SELAMAT DATANG DI —</div>
+        <h1 class="home-title glitch" data-text="APAKAH AKU">APAKAH AKU</h1>
+        <div class="home-tagline">Tebak gambarnya. Pilih jawabannya. <span class="highlight-pink">Sebelum waktu habis!</span></div>
+      </div>
+
+      <div class="home-decorations">
+        <div class="deco-line"></div>
+        <div class="deco-diamond"></div>
+        <div class="deco-line"></div>
+      </div>
+
+      <button class="btn-main pulse-glow" onclick="showPage('page-level')">
+        <span class="btn-main-icon">▶</span>
+        MAIN SEKARANG
+      </button>
+
+      <div class="home-stats">
+        <div class="stat-item">
+          <span class="stat-number">20</span>
+          <span class="stat-label">FOTO</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">3</span>
+          <span class="stat-label">LEVEL</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">2000</span>
+          <span class="stat-label">MAX POIN</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       PAGE: TENTANG GAME
+  ============================ -->
+  <section id="page-about" class="page">
+    <button class="btn-back" onclick="showPage('page-home')">← KEMBALI</button>
+    <div class="about-container">
+      <h2 class="section-title">TENTANG <span class="highlight-pink">GAME</span></h2>
+
+      <div class="about-card">
+        <div class="about-image-wrapper">
+          <div class="about-image-demo">
+            <div class="demo-photo-placeholder">
+              <span class="demo-icon">🖼️</span>
+              <span>FOTO DITAMPILKAN</span>
+            </div>
+          </div>
+          <div class="about-arrow">▼</div>
+          <div class="about-options-demo">
+            <div class="demo-btn demo-btn-1">OPSI 1</div>
+            <div class="demo-btn demo-btn-2">OPSI 2</div>
+          </div>
+        </div>
+
+        <div class="about-text">
+          <h3 class="about-heading">Cara Bermain</h3>
+          <ul class="about-list">
+            <li><span class="list-icon">📸</span> Sebuah <strong>foto</strong> akan ditampilkan di layar</li>
+            <li><span class="list-icon">⚡</span> Pilih satu dari <strong>2 opsi jawaban</strong> yang tersedia</li>
+            <li><span class="list-icon">⏱️</span> Jawab <strong>sebelum waktu habis</strong>!</li>
+            <li><span class="list-icon">✅</span> Jawaban benar = <strong class="highlight-green">+100 poin</strong></li>
+            <li><span class="list-icon">🎯</span> Total <strong>20 foto</strong> per sesi permainan</li>
+          </ul>
+
+          <h3 class="about-heading mt">Level Kesulitan</h3>
+          <div class="level-info-grid">
+            <div class="level-info-card ez">
+              <div class="level-info-name">⚡ EZ</div>
+              <div class="level-info-time">10 detik</div>
+              <div class="level-info-desc">Santai saja~</div>
+            </div>
+            <div class="level-info-card mid">
+              <div class="level-info-name">🔥 MENENGAH</div>
+              <div class="level-info-time">8 detik</div>
+              <div class="level-info-desc">Lumayan menantang</div>
+            </div>
+            <div class="level-info-card hard">
+              <div class="level-info-name">💀 SUSAH BOS</div>
+              <div class="level-info-time">5 detik</div>
+              <div class="level-info-desc">Hanya yang terkuat!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn-main" onclick="showPage('page-level')">MULAI BERMAIN ▶</button>
+    </div>
+  </section>
+
+  <!-- ===========================
+       PAGE: PILIH LEVEL
+  ============================ -->
+  <section id="page-level" class="page">
+    <button class="btn-back" onclick="showPage('page-home')">← KEMBALI</button>
+    <div class="level-container">
+      <h2 class="section-title">PILIH <span class="highlight-pink">LEVEL</span></h2>
+      <p class="level-subtitle">Seberapa percaya diri kamu?</p>
+
+      <div class="level-cards">
+        <div class="level-card level-ez" onclick="selectLevel('ez')">
+          <div class="level-card-glow"></div>
+          <div class="level-card-icon">⚡</div>
+          <div class="level-card-name">EZ</div>
+          <div class="level-card-time">10 detik / soal</div>
+          <div class="level-card-desc">Untuk pemula yang baru mulai</div>
+          <div class="level-card-btn">PILIH</div>
+        </div>
+
+        <div class="level-card level-mid" onclick="selectLevel('mid')">
+          <div class="level-card-glow"></div>
+          <div class="level-card-icon">🔥</div>
+          <div class="level-card-name">MENENGAH</div>
+          <div class="level-card-time">8 detik / soal</div>
+          <div class="level-card-desc">Untuk yang sudah terbiasa</div>
+          <div class="level-card-btn">PILIH</div>
+        </div>
+
+        <div class="level-card level-hard" onclick="selectLevel('hard')">
+          <div class="level-card-glow"></div>
+          <div class="level-card-icon">💀</div>
+          <div class="level-card-name">SUSAH BOS</div>
+          <div class="level-card-time">5 detik / soal</div>
+          <div class="level-card-desc">Hanya untuk para master!</div>
+          <div class="level-card-btn">PILIH</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       PAGE: COUNTDOWN
+  ============================ -->
+  <section id="page-countdown" class="page">
+    <div class="countdown-container">
+      <div class="countdown-label">BERSIAP...</div>
+      <div id="countdown-number" class="countdown-number">3</div>
+      <div class="countdown-ring">
+        <svg viewBox="0 0 200 200">
+          <circle class="ring-bg" cx="100" cy="100" r="85"/>
+          <circle id="countdown-ring-circle" class="ring-progress" cx="100" cy="100" r="85"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       PAGE: GAME
+  ============================ -->
+  <section id="page-game" class="page">
+    <div class="game-header">
+      <div class="game-info">
+        <div class="game-level-badge" id="game-level-badge">EZ</div>
+        <div class="game-score-display">
+          <span class="score-label">SKOR</span>
+          <span class="score-value" id="score-display">0</span>
+        </div>
+      </div>
+      <div class="game-progress">
+        <span id="question-counter">1 / 20</span>
+        <div class="progress-bar-wrapper">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="game-main">
+      <!-- Timer Bar -->
+      <div class="timer-wrapper">
+        <div class="timer-bar-container">
+          <div class="timer-bar" id="timer-bar"></div>
+        </div>
+        <div class="timer-text" id="timer-text">15</div>
+      </div>
+
+      <!-- Photo Display -->
+      <div class="photo-container">
+        <div class="photo-frame">
+          <img id="game-photo" src="" alt="Tebak Gambar ini!" class="game-photo" />
+          <div class="photo-overlay-top"></div>
+          <div class="photo-corner tl"></div>
+          <div class="photo-corner tr"></div>
+          <div class="photo-corner bl"></div>
+          <div class="photo-corner br"></div>
+        </div>
+        <div class="photo-number" id="photo-number">FOTO #1</div>
+      </div>
+
+      <!-- Answer Buttons -->
+      <div class="answer-section">
+        <div class="answer-prompt">— APA INI? —</div>
+        <div class="answer-buttons">
+          <button class="answer-btn btn-option-1" id="answer-btn-1" onclick="checkAnswer(1)">
+            <span class="answer-btn-num">1</span>
+            <span class="answer-btn-text" id="option1-text">OPSI 1</span>
+          </button>
+          <button class="answer-btn btn-option-2" id="answer-btn-2" onclick="checkAnswer(2)">
+            <span class="answer-btn-num">2</span>
+            <span class="answer-btn-text" id="option2-text">OPSI 2</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feedback Overlay -->
+    <div id="feedback-overlay" class="feedback-overlay hidden">
+      <div id="feedback-icon" class="feedback-icon">✓</div>
+      <div id="feedback-text" class="feedback-text">BENAR!</div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       PAGE: HASIL (RESULT)
+  ============================ -->
+  <section id="page-result" class="page">
+    <div class="result-container">
+      <div class="result-header">
+        <div id="result-emoji" class="result-emoji">🏆</div>
+        <h2 class="section-title">HASIL <span class="highlight-pink">GAME</span></h2>
+      </div>
+
+      <div class="result-score-card">
+        <div class="result-label">TOTAL SKOR</div>
+        <div class="result-score" id="result-score">0</div>
+        <div class="result-max">dari 2000 poin</div>
+        <div class="result-stars" id="result-stars">⭐⭐⭐</div>
+      </div>
+
+      <div class="result-stats">
+        <div class="result-stat-item">
+          <div class="result-stat-val" id="result-correct">0</div>
+          <div class="result-stat-label">Benar</div>
+        </div>
+        <div class="result-stat-item">
+          <div class="result-stat-val wrong" id="result-wrong">0</div>
+          <div class="result-stat-label">Salah/Habis</div>
+        </div>
+        <div class="result-stat-item">
+          <div class="result-stat-val" id="result-level-display">EZ</div>
+          <div class="result-stat-label">Level</div>
+        </div>
+      </div>
+
+      <div class="result-message" id="result-message">Luar biasa!</div>
+
+      <div class="result-buttons">
+        <button class="btn-main" onclick="restartGame()">🔄 MAIN LAGI</button>
+        <button class="btn-secondary" onclick="showPage('page-level')">GANTI LEVEL</button>
+        <button class="btn-secondary" onclick="showPage('page-home')">🏠 BERANDA</button>
+      </div>
+    </div>
+  </section>
+
+  <script src="config.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
